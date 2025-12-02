@@ -6,8 +6,8 @@
               - "7079:8080"
             depends_on:
               - mongodb
-        environment:
-            MONGO_URL: "mongodb://mongodb:27017/campusdb"
+            environment:
+                    MONGO_URL: "mongodb://mongodb:27017/campusdb"
 
           mongodb:
             image: mongo:6.0
@@ -18,5 +18,18 @@
             volumes:
               - mongo_data:/data/db
 
+        mysql:
+            image: mysql:8
+            container_name: mysql-container
+            environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: mydb
+            ports:
+              - "3306:3306"
+            volumes:
+              - mysql_data:/var/lib/mysql
+
         volumes:
           mongo_data:
+        volumes:
+          mysql_data:
